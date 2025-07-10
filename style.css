@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* prevent normal scroll */
+}
+
+section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.7s ease-in-out;
+}
+
+.section1 {
+  background: url('ChatGPT\ Image\ Jul\ 10\,\ 2025\,\ 03_01_59\ PM.png') no-repeat center center;
+  background-size: cover;
+  color: white;
+}
+
+.search-container {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
+
+.search-container input[type="text"] {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 300px;
+  outline: none;
+}
+
+/* Section 2 & 3 Layouts */
+.diagonal-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
+  width: 100%;
+  gap: 20px;
+  padding: 40px;
+}
+
+/* Images */
+.image-left img,
+.image-right img {
+  width: 100%;
+  max-width: 90%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-left {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.image-right {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.text-right,
+.text-left {
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  color: #f1c15d;
+}
+
+.text-right {
+  grid-column: 2 / 3;
+  text-align: left;
+  align-self: start;
+  justify-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text-left {
+  grid-column: 1 / 2;
+  text-align: left;
+  align-self: center;
+  justify-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.section2,
+.section3 {
+  background-image:url('ChatGPT\ Image\ Jul\ 10\,\ 2025\,\ 05_01_24\ PM.png');
+}
+
+.section2 h2,
+.section3 h2 {
+  font-size: 36px;
+  font-family: 'Georgia', serif;
+  margin-bottom: 10px;
+}
+
+.section2 p,
+.section3 p {
+  font-size: 25px;
+  line-height: 1.5;
+}
