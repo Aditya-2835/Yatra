@@ -29,21 +29,41 @@ section {
 }
 
 .search-container {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 12px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 16px 24px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 12px rgba(241, 193, 93, 0.3);
+  border: 1px solid rgba(241, 193, 93, 0.6);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-container:hover {
+  box-shadow: 0 0 18px rgba(241, 193, 93, 0.5);
 }
 
 .search-container input[type="text"] {
-  padding: 10px 15px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 10px;
+  font-size: 18px;
   width: 300px;
   outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-family: 'Georgia', serif;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+.search-container input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-container input[type="text"]:focus {
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 8px rgba(241, 193, 93, 0.6);
+}
+
 
 /* Section 2 & 3 Layouts */
 .diagonal-layout {
@@ -63,7 +83,17 @@ section {
   max-width: 90%;
   height: 100%;
   object-fit: contain;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 12px;
 }
+
+/* Hover animation */
+.image-left img:hover,
+.image-right img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(241, 193, 93, 0.6);
+} */
+
 
 .image-left {
   grid-row: 1;
@@ -81,8 +111,7 @@ section {
   align-items: flex-end;
 }
 
-.text-right,
-.text-left {
+.text-right {
   width: 100%;
   height: 100%;
   padding: 40px;
@@ -101,13 +130,17 @@ section {
 
 .text-left {
   grid-column: 1 / 2;
-  text-align: left;
-  align-self: center;
-  justify-self: stretch;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center;  /* vertical center */
+  align-items: center;      /* horizontal center */
+  text-align: center;       /* center text inside */
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  color: #f1c15d;
 }
+
 
 
 .section2,
@@ -126,4 +159,8 @@ section {
 .section3 p {
   font-size: 25px;
   line-height: 1.5;
+}
+
+.section3 h2{
+    color: #f1c15d;
 }
