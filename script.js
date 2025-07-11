@@ -85,6 +85,7 @@ window.addEventListener('wheel', (e) => {
 
 const suggestions = [
   "Restaurants",
+  "Belagavi",
   "Cafes",
   "Temples",
   "Beaches",
@@ -160,4 +161,60 @@ function highlightItem(items) {
 
   items[currentFocus].classList.add('active');
   searchInput.value = items[currentFocus].textContent;
+}
+
+
+function openMap(url) {
+  window.open(url, '_blank');
+}
+
+function openReviewPopup(placeName) {
+  document.getElementById("popup-title").textContent = `Review for ${placeName}`;
+  document.getElementById("review-popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("review-popup").style.display = "none";
+}
+
+function submitReview() {
+  const userType = document.getElementById("user-type").value;
+  const reviewText = document.querySelector(".popup-content textarea").value;
+  
+  if (reviewText.trim() === "") {
+    alert("Please write a review before submitting.");
+    return;
+  }
+
+  alert(`Thank you for your ${userType} review!`);
+  document.querySelector(".popup-content textarea").value = "";
+  closePopup();
+}
+
+
+function openMap(url) {
+  window.open(url, '_blank');
+}
+
+function openReviewPopup(placeName) {
+  document.getElementById("popup-title").textContent = `Review for ${placeName}`;
+  document.getElementById("review-popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("review-popup").style.display = "none";
+}
+
+function submitReview() {
+  const userType = document.getElementById("user-type").value;
+  const reviewText = document.querySelector(".popup-content textarea").value;
+
+  if (reviewText.trim() === "") {
+    alert("Please write a review before submitting.");
+    return;
+  }
+
+  alert(`Thank you for your ${userType} review!`);
+  document.querySelector(".popup-content textarea").value = "";
+  closePopup();
 }

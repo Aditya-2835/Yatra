@@ -1,16 +1,119 @@
-<!-- result.html -->
+<!-- result.html
 <!DOCTYPE html>
 <html>
 <head>
   <title>Search Result</title>
+  <link rel="stylesheet" href="Rstyle.css">
 </head>
 <body>
   <h1 id="result-heading"></h1>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const query = params.get("query");
-    document.getElementById("result-heading").textContent = `Results for "${decodeURIComponent(query)}"`;
-  </script>
+  
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Place Cards</title>
+  <link rel="stylesheet" href="Rstyle.css" />
+</head>
+<body>
+
+<!-- Section 1 -->
+<section class="scroll-section">
+  <div class="places-section">
+    <!-- Place 1 -->
+    <div class="place-card">
+      <img src="https://source.unsplash.com/300x200/?temple" alt="Golden Temple" />
+      <div class="place-details">
+        <h2>Golden Temple</h2>
+        <p class="stars">★★★★☆</p>
+        <button onclick="openMap('https://www.google.com/maps?q=Golden+Temple')">Direction</button>
+        <a href="#" onclick="openReviewPopup('Golden Temple')">Been here?!! Tell us more about this place</a>
+      </div>
+    </div>
+
+    <!-- Place 2 -->
+    <div class="place-card">
+      <img src="https://source.unsplash.com/300x200/?beach" alt="Goa Beach" />
+      <div class="place-details">
+        <h2>Goa Beach</h2>
+        <p class="stars">★★★★★</p>
+        <button onclick="openMap('https://www.google.com/maps?q=Goa+Beach')">Direction</button>
+        <a href="#" onclick="openReviewPopup('Goa Beach')">Been here?!! Tell us more about this place</a>
+      </div>
+    </div>
+
+    <!-- Place 3 -->
+    <div class="place-card">
+      <img src="https://source.unsplash.com/300x200/?market" alt="Chandni Chowk" />
+      <div class="place-details">
+        <h2>Chandni Chowk</h2>
+        <p class="stars">★★★☆☆</p>
+        <button onclick="openMap('https://www.google.com/maps?q=Chandni+Chowk')">Direction</button>
+        <a href="#" onclick="openReviewPopup('Chandni Chowk')">Been here?!! Tell us more about this place</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2 -->
+<section class="scroll-section">
+  <div class="places-section">
+    <!-- Place 4 -->
+    <div class="place-card">
+      <img src="https://source.unsplash.com/300x200/?museum" alt="Indian Museum" />
+      <div class="place-details">
+        <h2>Indian Museum</h2>
+        <p class="stars">★★★★☆</p>
+        <button onclick="openMap('https://www.google.com/maps?q=Indian+Museum')">Direction</button>
+        <a href="#" onclick="openReviewPopup('Indian Museum')">Been here?!! Tell us more about this place</a>
+      </div>
+    </div>
+
+    <!-- Place 5 -->
+    <div class="place-card">
+      <img src="https://source.unsplash.com/300x200/?hillstation" alt="Manali Hills" />
+      <div class="place-details">
+        <h2>Manali Hills</h2>
+        <p class="stars">★★★★★</p>
+        <button onclick="openMap('https://www.google.com/maps?q=Manali+Hills')">Direction</button>
+        <a href="#" onclick="openReviewPopup('Manali Hills')">Been here?!! Tell us more about this place</a>
+      </div>
+    </div>
+
+    <!-- Place 6 -->
+    <div class="place-card">
+      <img src="https://source.unsplash.com/300x200/?streetfood" alt="Delhi Street Food" />
+      <div class="place-details">
+        <h2>Delhi Street Food</h2>
+        <p class="stars">★★★☆☆</p>
+        <button onclick="openMap('https://www.google.com/maps?q=Delhi+Street+Food')">Direction</button>
+        <a href="#" onclick="openReviewPopup('Delhi Street Food')">Been here?!! Tell us more about this place</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popup Review Box -->
+<div id="review-popup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">×</span>
+    <h3 id="popup-title">Review</h3>
+    <label>
+      Are you a:
+      <select id="user-type">
+        <option value="local">Localite</option>
+        <option value="tourist">Tourist</option>
+      </select>
+    </label>
+    <textarea placeholder="Share your experience..." rows="5"></textarea>
+    <button onclick="submitReview()">Submit Review</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
