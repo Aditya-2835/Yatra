@@ -88,10 +88,48 @@ section {
 }
 
 
-.search-container input[type="text"]:focus {
-  background-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 8px rgba(241, 193, 93, 0.6);
+/* Ensure search-container is positioned relatively */
+.search-container {
+  position: relative;
+  display: inline-block;
 }
+
+/* Suggestion Box Styling */
+.suggestion-box {
+  position: absolute;
+  top: 100%; /* aligns just below input */
+  left: 0;
+  width: 100%;
+  background-color: rgba(15, 15, 31, 0.95); /* dark background */
+  border: 1px solid rgba(241, 193, 93, 0.6);
+  border-radius: 12px;
+  margin-top: 6px;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 0 12px rgba(241, 193, 93, 0.3);
+}
+
+/* Each Suggestion Item */
+.suggestion-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Georgia', serif;
+  color: #fefefe; /* more visible */
+  transition: background-color 0.3s ease;
+}
+
+.suggestion-item:hover {
+  background-color: rgba(241, 193, 93, 0.2);
+}
+
+/* Highlighted suggestion */
+.suggestion-item.active {
+  background-color: rgba(241, 193, 93, 0.3);
+  color: #fff;
+}
+
 
 
 /* Section 2 & 3 Layouts */
@@ -112,16 +150,7 @@ section {
   max-width: 90%;
   height: 100%;
   object-fit: contain;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  border-radius: 12px;
 }
-
-/* Hover animation */
-.image-left img:hover,
-.image-right img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(241, 193, 93, 0.6);
-} */
 
 
 .image-left {
@@ -161,15 +190,22 @@ section {
   grid-column: 1 / 2;
   display: flex;
   flex-direction: column;
-  justify-content: center;  /* vertical center */
-  align-items: center;      /* horizontal center */
-  text-align: center;       /* center text inside */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   height: 100%;
   width: 100%;
   padding: 40px;
   color: #f1c15d;
 }
 
+.text-left h2 {
+  margin-bottom: 10px;
+}
+
+.text-left p {
+  margin-bottom: 20px;
+}
 
 
 .section2,
@@ -241,3 +277,4 @@ section {
   background-color: rgba(241, 193, 93, 0.1);
   box-shadow: 0 0 16px rgba(241, 193, 93, 0.4);
 }
+

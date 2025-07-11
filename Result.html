@@ -1,0 +1,16 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Result</title>
+</head>
+<body>
+  <h1 id="result-heading"></h1>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("query");
+    document.getElementById("result-heading").textContent = `Results for "${decodeURIComponent(query)}"`;
+  </script>
+</body>
+</html>

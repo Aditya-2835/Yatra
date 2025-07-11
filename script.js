@@ -30,3 +30,134 @@ window.addEventListener('wheel', (e) => {
     }
   }
 });
+
+
+// // Sample suggestion list
+// const suggestions = [
+//   "Restaurants",
+//   "Cafes",
+//   "Temples",
+//   "Beaches",
+//   "Museums",
+//   "Local Markets",
+//   "Historical Places",
+//   "Street Food",
+//   "Shopping Malls"
+// ];
+
+// const searchInput = document.querySelector('.search-container input[type="text"]');
+// const suggestionBox = document.createElement('div');
+// suggestionBox.classList.add('suggestion-box');
+// document.querySelector('.search-container').appendChild(suggestionBox);
+
+// // Display filtered suggestions
+// searchInput.addEventListener('input', () => {
+//   const value = searchInput.value.toLowerCase();
+//   suggestionBox.innerHTML = '';
+
+//   if (value) {
+//     const filtered = suggestions.filter(s =>
+//       s.toLowerCase().includes(value)
+//     );
+//     filtered.forEach(item => {
+//       const div = document.createElement('div');
+//       div.textContent = item;
+//       div.classList.add('suggestion-item');
+//       div.onclick = () => {
+//         searchInput.value = item;
+//         suggestionBox.innerHTML = '';
+//       };
+//       suggestionBox.appendChild(div);
+//     });
+//   }
+// });
+
+// // Navigate to new page on Enter
+// searchInput.addEventListener('keydown', e => {
+//   if (e.key === 'Enter') {
+//     e.preventDefault();
+//     const query = encodeURIComponent(searchInput.value.trim());
+//     if (query) {
+//       window.location.href = `result.html?query=${query}`;
+//     }
+//   }
+// });
+
+const suggestions = [
+  "Restaurants",
+  "Cafes",
+  "Temples",
+  "Beaches",
+  "Museums",
+  "Local Markets",
+  "Historical Places",
+  "Street Food",
+  "Shopping Malls"
+];
+
+const searchInput = document.querySelector('.search-container input[type="text"]');
+const suggestionBox = document.createElement('div');
+suggestionBox.classList.add('suggestion-box');
+document.querySelector('.search-container').appendChild(suggestionBox);
+
+let currentFocus = -1; // Index of highlighted suggestion
+
+// Show suggestions
+searchInput.addEventListener('input', () => {
+  const value = searchInput.value.toLowerCase();
+  suggestionBox.innerHTML = '';
+  currentFocus = -1;
+
+  if (value) {
+    const filtered = suggestions.filter(s =>
+      s.toLowerCase().includes(value)
+    );
+    filtered.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.textContent = item;
+      div.classList.add('suggestion-item');
+      div.setAttribute('data-index', index);
+
+      div.onclick = () => {
+        searchInput.value = item;
+        suggestionBox.innerHTML = '';
+      };
+
+      suggestionBox.appendChild(div);
+    });
+  }
+});
+
+// Handle keyboard navigation
+searchInput.addEventListener('keydown', e => {
+  const items = suggestionBox.querySelectorAll('.suggestion-item');
+
+  if (e.key === 'ArrowDown') {
+    currentFocus++;
+    highlightItem(items);
+  } else if (e.key === 'ArrowUp') {
+    currentFocus--;
+    highlightItem(items);
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    if (currentFocus > -1 && items[currentFocus]) {
+      searchInput.value = items[currentFocus].textContent;
+      suggestionBox.innerHTML = '';
+    }
+    const query = encodeURIComponent(searchInput.value.trim());
+    if (query) {
+      window.location.href = `result.html?query=${query}`;
+    }
+  }
+});
+
+function highlightItem(items) {
+  if (!items.length) return;
+  items.forEach(item => item.classList.remove('active'));
+
+  if (currentFocus < 0) currentFocus = 0;
+  if (currentFocus >= items.length) currentFocus = items.length - 1;
+
+  items[currentFocus].classList.add('active');
+  searchInput.value = items[currentFocus].textContent;
+}
