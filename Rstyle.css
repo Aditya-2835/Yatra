@@ -10,6 +10,34 @@ html, body {
   color: white;
 }
 
+.navbar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+.nav-button {
+  background: transparent;
+  color: #f1c15d;
+  border: 2px solid #f1c15d;
+  border-radius: 25px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nav-button:hover {
+  background: #f1c15d;
+  color: #000;
+}
+
+
 .scroll-section {
   min-height: 100vh;
   scroll-snap-align: start;

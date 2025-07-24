@@ -218,3 +218,85 @@ function submitReview() {
   document.querySelector(".popup-content textarea").value = "";
   closePopup();
 }
+
+
+const dummyPlaces = [
+  { name: "Golden Temple", type: "place", distance: 0.8, rating: 4, image: "https://source.unsplash.com/300x200/?temple" },
+  { name: "Goa Beach", type: "place", distance: 2.5, rating: 5, image: "https://source.unsplash.com/300x200/?beach" },
+  { name: "Chandni Chowk", type: "place", distance: 0.5, rating: 3, image: "https://source.unsplash.com/300x200/?market" },
+  { name: "Indian Museum", type: "place", distance: 4, rating: 4, image: "https://source.unsplash.com/300x200/?museum" },
+  { name: "Manali Hills", type: "place", distance: 45, rating: 5, image: "https://source.unsplash.com/300x200/?hillstation" },
+  { name: "Delhi Street Food", type: "restaurant", distance: 0.6, rating: 3, image: "https://source.unsplash.com/300x200/?streetfood" },
+  { name: "Spice Villa", type: "restaurant", distance: 3.2, rating: 4, image: "https://source.unsplash.com/300x200/?restaurant" },
+  { name: "Cafe Delhi Heights", type: "restaurant", distance: 7, rating: 5, image: "https://source.unsplash.com/300x200/?cafe" },
+];
+
+let selectedType = 'restaurants';
+let selectedMood = 'all';
+
+function switchCategory(type) {
+  selectedType = type;
+  renderFilteredPlaces();
+}
+
+function filterByMood(mood) {
+  selectedMood = mood;
+  renderFilteredPlaces();
+}
+
+function renderFilteredPlaces() {
+  const container = document.getElementById("filtered-container");
+  container.innerHTML = "";
+
+  const filtered = dummyPlaces.filter(place => {
+    const matchType = selectedType === 'all' || place.type === selectedType.slice(0, -1);
+    const matchMood = (
+      selectedMood === 'all' ||
+      (selectedMood === 'lazy' && place.distance <= 1) ||
+      (selectedMood === 'moderate' && place.distance <= 10) ||
+      (selectedMood === 'active' && place.distance <= 50)
+    );
+    return matchType && matchMood;
+  });
+
+  filtered.forEach(place => {
+    const card = document.createElement("div");
+    card.className = "place-card";
+    card.innerHTML = `
+      <img src="${place.image}" alt="${place.name}" />
+      <div class="place-details">
+        <h2>${place.name}</h2>
+        <p class="stars">${'★'.repeat(place.rating)}${'☆'.repeat(5 - place.rating)} <span style="margin-left:10px;">(${place.distance} km)</span></p>
+        <button onclick="openMap('https://www.google.com/maps?q=${encodeURIComponent(place.name)}')">Direction</button>
+        <a href="#" onclick="openReviewPopup('${place.name}')">Been here?!! Tell us more about this place</a>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Dummy functions for existing buttons
+function openMap(url) {
+  window.open(url, '_blank');
+}
+
+function openReviewPopup(place) {
+  const popup = document.getElementById('review-popup');
+  document.getElementById('popup-title').textContent = `Review - ${place}`;
+  popup.style.display = 'flex';
+}
+
+function closePopup() {
+  document.getElementById('review-popup').style.display = 'none';
+}
+
+function submitReview() {
+  alert('Thank you for your review!');
+  closePopup();
+}
+
+window.onload = renderFilteredPlaces;
+
+
+
+
